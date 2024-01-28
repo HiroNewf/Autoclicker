@@ -104,7 +104,7 @@ class AutoclickerGUI:
     def get_num_repeats(self, event=None):
         repeat_window = tk.Toplevel(self.root)
         repeat_window.title("Enter Number of Presses")
-        repeat_window.geometry("200x100")
+        repeat_window.geometry("320x140")  # Adjusted size
         repeat_window.configure(bg="#3D2E4D")
 
         repeat_label = tk.Label(repeat_window, text="Enter Number of Presses:", bg="#3D2E4D", fg="#B3A5C0")
@@ -119,12 +119,14 @@ class AutoclickerGUI:
 
     def confirm_num_repeats(self, window, entry):
         num_repeats = entry.get()
-        if num_repeats.isdigit():
+        if num_repeats.isdigit() and 0 < int(num_repeats) <= 999:
             self.num_repeats_button["text"] = f"Repeat {num_repeats} Times"
             window.destroy()
         else:
-            error_label = tk.Label(window, text="Please enter a valid number", fg="red", bg="#3D2E4D")
-            error_label.pack(pady=5)
+            if hasattr(self, 'error_label'):
+                self.error_label.destroy()
+            self.error_label = tk.Label(window, text="Please enter a valid number between 1 and 999", fg="red", bg="#3D2E4D")
+            self.error_label.pack(pady=5)
 
     def start_autoclicker(self):
         button_to_click = self.button_entry.get().lower()
