@@ -1,6 +1,6 @@
 # Autoclicker
 ## Table of Contents 
-[Decription](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#desciption)
+[Decription](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#desciption) /n
 [Installation](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#installation)
   [Windows](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#windows)
   [Linux](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#linux)
