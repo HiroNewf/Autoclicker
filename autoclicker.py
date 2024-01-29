@@ -1,10 +1,11 @@
+# Libraries
 import tkinter as tk
 import threading
 import time
 import pyautogui
 import keyboard
 
-# The autoclicker itself
+# The autoclicker itself (for cmd but also the base for the GUI)
 class Autoclicker:
     def __init__(self, button, click_interval, repeat_forever=True, num_repeats=None):
         self.button = button
@@ -17,7 +18,7 @@ class Autoclicker:
     def autoclick_thread(self, gui_instance):
         while self.is_running:
             time.sleep(self.click_interval)
-            if self.button in ['left', 'right', 'middle']:
+            if self.button in ['left', 'right', 'middle']: # Keywords for mouse button options
                 pyautogui.click(button=self.button)
             else:
                 keyboard.press(self.button)
@@ -35,18 +36,18 @@ class Autoclicker:
 
     def stop_autoclicker(self, gui_instance):
         self.is_running = False
-        print("Autoclicker stopped. Total clicks:", self.click_count)
+        print("Autoclicker stopped. Total clicks:", self.click_count) # Output total clicks to the user
         gui_instance.on_autoclicker_stopped()
 
 # Man I really hate making GUI's, but here we are 
 class AutoclickerGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Hiro's Incredible Autoclicker")
-        self.root.geometry("290x185")
-        self.root.resizable(False, False)
+        self.root.title("Hiro's Incredible Autoclicker") # Window name
+        self.root.geometry("290x185") # Window size (wow what a great and normal resolution) 
+        self.root.resizable(False, False) # No changing window size for you
         self.root.configure(bg="#3D2E4D")
-
+        # Buttons go brrr
         button_label = tk.Label(root, text="Button:", bg="#3D2E4D", fg="#B3A5C0")
         button_label.grid(row=0, column=0, pady=5, padx=10, sticky="e")
 
@@ -84,7 +85,7 @@ class AutoclickerGUI:
         self.repeat_forever_button.bind("<Enter>", lambda event: self.change_button_color(self.repeat_forever_button))
         self.repeat_forever_button.bind("<Leave>", lambda event: self.restore_button_color(self.repeat_forever_button))
 	
-	# This totaly centers the GUI on the window (shhhh)
+	# This totaly centers the GUI on the window (shhhh). pssst it doesn't work, if someone wants to fix this that'd be great 
     def center_window(self, event):
         w = self.root.winfo_width()
         h = self.root.winfo_height()
@@ -93,16 +94,16 @@ class AutoclickerGUI:
         self.root.geometry('+%d+%d' % (x, y))
 
     def toggle_repeat(self, mode):
-        if mode == "forever":
+        if mode == "forever": # Repeat forever option
             self.num_repeats_button.config(bg="#30243D", relief=tk.RAISED)
             self.repeat_forever_button.config(bg="#706993", relief=tk.SUNKEN)
             self.selected_button = self.repeat_forever_button
-        elif mode == "num_repeats":
+        elif mode == "num_repeats": # Repeat for a set number of times option
             self.repeat_forever_button.config(bg="#30243D", relief=tk.RAISED)
             self.num_repeats_button.config(bg="#706993", relief=tk.SUNKEN)
             self.selected_button = self.num_repeats_button
 
-    def get_num_repeats(self, event=None):
+    def get_num_repeats(self, event=None): # Open new window to get the number of repeats the user desires 
         repeat_window = tk.Toplevel(self.root)
         repeat_window.title("Enter Number of Presses")
         repeat_window.geometry("320x140")
@@ -118,15 +119,15 @@ class AutoclickerGUI:
                                    bg="#30243D", fg="#C7CCDB", activebackground="#706993", relief=tk.RAISED)
         confirm_button.pack(pady=5)
 
-    def confirm_num_repeats(self, window, entry):
+    def confirm_num_repeats(self, window, entry): 
         num_repeats = entry.get()
-        if num_repeats.isdigit() and 0 < int(num_repeats) <= 999:
-            self.num_repeats_button["text"] = f"Repeat {num_repeats} Times"
+        if num_repeats.isdigit() and 0 < int(num_repeats) <= 999: # Limit repeats to 999 max 
+            self.num_repeats_button["text"] = f"Repeat {num_repeats} Times" # Prints number of repeats on the button option 
             window.destroy()
         else:
             if hasattr(self, 'error_label'):
                 self.error_label.destroy()
-            self.error_label = tk.Label(window, text="Please enter a valid number between 1 and 999", fg="red", bg="#3D2E4D")
+            self.error_label = tk.Label(window, text="Please enter a valid number between 1 and 999", fg="red", bg="#3D2E4D") # Error message for invalid repeat number
             self.error_label.pack(pady=5)
 
     def start_autoclicker(self):
@@ -136,12 +137,12 @@ class AutoclickerGUI:
         num_repeats = int(self.num_repeats_button["text"].split()[-2]) if not repeat_forever else None
 
         if not button_to_click:
-            self.show_error("Please enter a button to click.")
+            self.show_error("Please enter a button to click.") 
             return
 
         if self.autoclicker:
             self.stop_autoclicker()
-
+        # Lock the buttons when the autoclicker is running 
         self.button_entry.config(state=tk.DISABLED)
         self.interval_entry.config(state=tk.DISABLED)
         self.num_repeats_button.config(state=tk.DISABLED)
@@ -157,7 +158,7 @@ class AutoclickerGUI:
         if self.autoclicker:
             self.autoclicker.stop_autoclicker(self)
 
-    def on_autoclicker_stopped(self):
+    def on_autoclicker_stopped(self): # Return buttons to normal upon the autoclicker stopping 
         self.button_entry.config(state=tk.NORMAL)
         self.interval_entry.config(state=tk.NORMAL)
         self.num_repeats_button.config(state=tk.NORMAL)
