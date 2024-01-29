@@ -11,13 +11,13 @@ This is a basic autoclicker tool that works on both Windows and Linux operating 
 ## Installation
 ### Windows
 Note: this application was made with Windows 10 in mind, it *should* work on Windows 11, but this has not been tested. 
-1. Download the most recent .exe file from the [Releases](https://github.com/HiroNewf/Autoclicker/releases) section of this github page
-2. Open the application 
+1. Download the most recent .exe file from the [Releases](https://github.com/HiroNewf/Autoclicker/releases) section of this github page.
+2. Open the application.
 ### Linux
-1. Clone the github repo `git clone https://github.com/HiroNewf/Autoclicker.git`
-2. Move into the directory for the cloned repo `cd Autoclicker`
-3. Install the requirements `pip install -r requirements.txt`
-4. Run the python script `python3 autoclicker.py`
+1. Clone the github repo `git clone https://github.com/HiroNewf/Autoclicker.git`.
+2. Move into the directory for the cloned repo `cd Autoclicker`.
+3. Install the requirements `pip install -r requirements.txt`.
+4. Run the python script `python3 autoclicker.py`.
 ## Usage
 Note: upon opening the application a command line window will also open, this can be mostly ignored but may provide some useful debugging / troubleshooting information if you are having trouble using the application. Additionally if you sumbit an issue for this application please include any text from this command line to help me resolve your issue easier. 
 1. Upon opening the application there are only a few inputs / buttons presented to the user, the first of which being a `Button` field. Here you will enter the button you wish to have the autoclicker repeatedly press. Inputs like "1, f, F6, & right" are accepted. For the mouse buttons use the keywords right, left, & middle. 
