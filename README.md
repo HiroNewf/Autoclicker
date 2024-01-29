@@ -7,7 +7,7 @@
 * [Usage](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#linux)
 * [License](https://github.com/HiroNewf/Autoclicker/blob/main/README.md#linux)
 ## Description
-This is a basic autoclicker tool that works on both Windows and Linux operating systems. This autoclicker will allow you to select any keyboard or mouse input and have it be repeted for a given number of times or indefinitely. You will also be able to set the amount of time between each key press within the very high quality GUI. 
+This is a basic autoclicker tool that works on both Windows and Linux operating systems. This autoclicker will allow you to select any keyboard or mouse input and have it be repeted for a given number of times or indefinitely. You will also be able to set the amount of time between each key press within the *very* high quality GUI. 
 ## Installation
 ### Windows
 Note: this application was made with Windows 10 in mind, it *should* work on Windows 11 as long as you are on 64 bit, but this has not been tested. 
