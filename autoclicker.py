@@ -1,4 +1,4 @@
-# Libraries
+# Libraries / modules 
 import tkinter as tk
 import threading
 import time
