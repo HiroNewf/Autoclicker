@@ -83,6 +83,7 @@ class AutoclickerGUI:
         self.num_repeats_button.bind("<Leave>", lambda event: self.restore_button_color(self.num_repeats_button))
         self.repeat_forever_button.bind("<Enter>", lambda event: self.change_button_color(self.repeat_forever_button))
         self.repeat_forever_button.bind("<Leave>", lambda event: self.restore_button_color(self.repeat_forever_button))
+	
 	# This totaly centers the GUI on the window (shhhh)
     def center_window(self, event):
         w = self.root.winfo_width()
@@ -104,7 +105,7 @@ class AutoclickerGUI:
     def get_num_repeats(self, event=None):
         repeat_window = tk.Toplevel(self.root)
         repeat_window.title("Enter Number of Presses")
-        repeat_window.geometry("320x140")  # Adjusted size
+        repeat_window.geometry("320x140")
         repeat_window.configure(bg="#3D2E4D")
 
         repeat_label = tk.Label(repeat_window, text="Enter Number of Presses:", bg="#3D2E4D", fg="#B3A5C0")
