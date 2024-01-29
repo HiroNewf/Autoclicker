@@ -11,7 +11,7 @@ This is a basic autoclicker tool that works on both Windows and Linux operating 
 ## Installation
 ### Windows
 Note: this application was made with Windows 10 in mind, it *should* work on Windows 11 as long as you are on 64 bit, but this has not been tested. 
-1. Download the most recent .exe file from the Releases section of this github page
+1. Download the most recent .exe file from the [Releases](https://github.com/HiroNewf/Autoclicker/releases) section of this github page
 2. Open the application 
 ### Linux
 1. Clone the github repo `git clone https://github.com/HiroNewf/Autoclicker.git`
